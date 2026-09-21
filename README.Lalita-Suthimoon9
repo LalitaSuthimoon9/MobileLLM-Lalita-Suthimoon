@@ -1,36 +1,35 @@
-# MobileLLM
-
+Lalita-Suthimoon9 MobileLLM
+Lalita-Suthimoon9 
 This repository contains the training code of MobileLLM introduced in our work: "[MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases](https://arxiv.org/abs/2402.14905)", published in ICML 2024.
-
+Lalita-Suthimoon9 
 In this work, we comprehensively consider multiple design factors to obtain high-quality LLMs with fewer than a billion parameters. We integrated (1) SwiGLU activation function, (2) deep and thin architectures, (3) embedding sharing, (4) grouped-query attention to build MobileLLM. MobileLLM-125M/350M attains a remarkable 2.7%/4.3% accuracy boost over preceding 125M/350M SoTA models on zero-shot commonsense reasoning tasks. In our updated version, we further demonstrate that our design philosophy scales effectively to larger models, with SoTA results for MobileLLM-600M/1B/1.5B.
-
+Lalita-Suthimoon9 
 <div align=center>
 <img width=50% src="./mobilellm.png"/>
 </div>
-
+Lalita-Suthimoon9 
 ## News
 - Jan 2026: 🔥 [MobileLLM-R1](https://arxiv.org/pdf/2509.24945) has been accepted to ICLR 2026. 
 - Nov 2025: 🌟 [MobileLLM-R1.5](https://huggingface.co/collections/facebook/mobilellm-r15) is released. MobileLLM-R1.5-950M outperforms DeepSeek-R1-Distill-Qwen-1.5B on all evaluated math and coding benchmarks, despite having significantly fewer parameters (0.95B vs. 1.5B).
 - Sept 2025: 🔥 Our follow-up work, [MobileLLM-R1](https://arxiv.org/pdf/2509.24945) is released. With only ~2T pretraining tokens (<5T total), it matches or surpasses Qwen3-0.6B (36T tokens) on MATH, GSM8K, MMLU, and LiveCodeBench. All code, models, data, and training recipes are released. [HuggingFace](https://huggingface.co/collections/facebook/mobilellm-r1)
 - Oct 30, 2024: 🚀 MobileLLM models are publicly available on [HuggingFace](https://huggingface.co/collections/facebook/mobilellm-6722be18cb86c20ebe113e95)
-
+Lalita-Suthimoon9 
 ## Citation
-
+Lalita-Suthimoon9 
 If you find our code useful for your research, please consider citing:
-    
+    Lalita-Suthimoon9 
     @article{liu2024mobilellm,
         title={MobileLLM: Optimizing Sub-billion Parameter Language Models for On-Device Use Cases},
         author={Liu, Zechun and Zhao, Changsheng and Iandola, Forrest and Lai, Chen and Tian, Yuandong and Fedorov, Igor and Xiong, Yunyang and Chang, Ernie and Shi, Yangyang and Krishnamoorthi, Raghuraman and others},
         journal={arXiv preprint arXiv:2402.14905},
         year={2024}
-    }
-    
-## Run
-
+  Lalita-Suthimoon9  
+    Lalita-Suthimoon9 
+Lalita-Suthimoon9 
 ### Step 1. Requirements:
 * python 3.9, pytorch >= 2.0
 * pip install -r requirement.txt
-   
+   Lalita-Suthimoon9 
 ### Step 2. Data preprocessing
 Dividing a tokenized dataset or tokenize your own dataset, and even distribute it across the total number of training nodes, where each node comprises 1x8 GPUs. Next, organize the data into the following structure: 
 - basepath
@@ -45,26 +44,26 @@ Dividing a tokenized dataset or tokenize your own dataset, and even distribute i
 Each line of a jsonl file is a key-value pair of tokenized data {"token_ids": [1,2,3,4,...]}. 
 
 Our training code is compatible with the data pre-processing method in https://github.com/LLM360/amber-data-prep.
-
-
+Lalita-Suthimoon9 
+Lalita-Suthimoon9 
 ### Step 3. Training script
 The script `pretrain.sh` is provided to initiate training on a 1x8 node setup using torchrun. This script can be modified to adjust the `--nnodes` parameter and other settings to suit different multi-node configurations, such as those using slurm or torchx. The learning rate in the script is for 1x8 node with a batch size of 32. If you increase the number of nodes or the batch size, you need to increase the learning rate linearly.
-
+Lalita-Suthimoon9 
 Steps to run:
 * In `pretrain.sh` file, specify the  `--train_data_local_path` to the pre-processed data in Step 2 and `--input_model_filename` to `./configs/{model_size}/`.
 * Run `bash pretrain.sh `
-
+Lalita-Suthimoon9 
 ### Evaluation on Wiki
 Download the models and update the checkpoint path in eval.sh
 * Run `bash eval.sh `
-
+Lalita-Suthimoon9 
 ## Training cost 
 It takes the following number of days to train MobileLLM on 1T tokens using 32 NVIDIA A100 80G GPUs.
 | 125M | 350M | 600M | 1B | 1.5B | 
 | --- | --- | --- | --- | --- |
 | ~3 days| ~6 days| ~8 days | ~12 days | ~18 days |
 
-
+Lalita-Suthimoon9 
 ## Results on Zero-shot Common Sense Reasoning tasks
 
 ### MobileLLM-125M
@@ -141,7 +140,8 @@ LLM-QAT: Data-Free Quantization Aware Training for Large Language Models [[Paper
 MobileLLM-R1: Exploring the Limits of Sub-Billion Language Model Reasoners with Open Training Recipes (ICLR 2026)[[Paper](https://arxiv.org/pdf/2509.24945)] [[Code](https://github.com/facebookresearch/MobileLLM-R1)] [[Models](https://huggingface.co/collections/facebook/mobilellm-r1)]
 
 MobileLLM-R1.5 [[Models](https://huggingface.co/collections/facebook/mobilellm-r15)]
-
+Lalita-Suthimoon9 
 ## License
-
+Lalita-Suthimoon9 
 MobileLLM is FAIR NC licensed as of now.
+Lalita-Suthimoon9 
